@@ -1,16 +1,15 @@
 <script setup>
-import { ref, watchEffect } from "vue";
+import { ref, watchEffect, inject } from "vue";
 import GlobalCards from "../reusable/cards/global-card.vue";
 import { useFetch } from "nuxt/app";
 import ShowCard from "../reusable/cards/show-card/ShowCard.vue";
 
 import { defineProps } from "vue";
 
-const { watchlist } = defineProps({
-  watchlist: Array,
-});
+const watchlist = inject("watchlist");
+
 watchEffect(() => {
-  console.log("watchlist props : ", watchlist.value);
+  console.log("watchlist from myList: ", watchlist.value);
 });
 </script>
 
