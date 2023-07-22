@@ -49,6 +49,7 @@ watchEffect(async () => {
             :ended="show.show.ended"
             :rating="show.show.rating"
             :averageRuntime="show.show.averageRuntime"
+            showCardVersion="search"
           />
         </div>
       </div>

@@ -35,26 +35,16 @@
         <div v-else class="ml-2">unknown date</div>
       </div>
     </div>
-    <div class="h-full flex items-center pr-2">
-      <button
-        @click="addToWatchlist(id)"
-        class="py-1 px-2 rounded bg-yellow-300"
-      >
-        Add to watchlist
-      </button>
-    </div>
+    <ButtonCard :id="id" :showCardVersion="showCardVersion" />
   </div>
 </template>
 
 <script>
-import { inject } from "vue";
+import ButtonCard from "./ButtonCard.vue";
 
 export default {
-  setup() {
-    const addToWatchlist = inject("addToWatchlist");
-    console.log("addToWatchlist", addToWatchlist);
-    return { addToWatchlist };
-  },
+  components: { ButtonCard },
+
   props: {
     id: {
       type: Number,
@@ -87,6 +77,10 @@ export default {
     averageRuntime: {
       type: Number,
       required: false,
+    },
+    showCardVersion: {
+      type: String,
+      required: true,
     },
   },
 };

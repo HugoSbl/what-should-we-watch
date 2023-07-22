@@ -9,13 +9,19 @@ const watchlist = ref([]);
 
 const addToWatchlist = (id) => {
   watchlist.value.push(id);
-  console.log("id added to watchlist :", id);
-  console.log("watchlist", watchlist.value);
+};
+
+const removeFromWatchlist = (id) => {
+  const index = watchlist.value.indexOf(id);
+  if (index !== -1) {
+    watchlist.value.splice(index, 1);
+  }
+  console.log("watchlist.value remove :", watchlist.value);
 };
 
 provide("watchlist", watchlist);
 provide("addToWatchlist", addToWatchlist);
-console.log("watchlist", watchlist.value);
+provide("removeFromWatchlist", removeFromWatchlist); // Provide this function to child components
 </script>
 
 <template>
