@@ -1,7 +1,21 @@
-<script setup lang="ts">
+<script setup>
 import Search from "../components/search/Search.vue";
+import MyList from "../components/my-list/MyList.vue";
 import { useRoute } from "vue-router";
 const route = useRoute();
+import { ref, provide } from "vue";
+
+const watchlist = ref([]);
+
+const addToWatchlist = (id) => {
+  watchlist.value.push(id);
+  console.log("id added to watchlist :", id);
+  console.log("watchlist", watchlist.value);
+};
+
+provide("watchlist", watchlist);
+provide("addToWatchlist", addToWatchlist);
+console.log("watchlist", watchlist.value);
 </script>
 
 <template>
@@ -13,5 +27,6 @@ const route = useRoute();
       >Learn more about Nuxt Routing</a
     >
     <Search />
+    <MyList watchlist="watchlist.value" />
   </div>
 </template>
