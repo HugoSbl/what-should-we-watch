@@ -31,14 +31,18 @@ watchEffect(async () => {
   <GlobalCards title="Search">
     <div class="flex flex-col">
       <input
-        class="w-full border-2"
+        class="w-full border-2 rounded border-gray-400 p-2"
         v-model="searchInput"
         placeholder="search for a show"
       />
-      <div>this is a test</div>
-      <div v-if="fetchResults && fetchResults.length > 0 && !isFetching">
+
+      <div
+        v-if="fetchResults && fetchResults.length > 0 && !isFetching"
+        class="overflow-y-auto h-96"
+      >
         <div v-for="(show, index) in fetchResults" :key="index">
           <ShowCard
+            :id="show.show.id"
             :title="show.show.name"
             :image="show.show.image"
             :premiered="show.show.premiered"
