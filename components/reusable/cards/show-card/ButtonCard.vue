@@ -11,10 +11,9 @@
 
     <div v-if="showCardVersion === 'mylist'">
       <div class="flex">
-        <Checkbox>
-          <CheckboxInput />
-          <CheckboxControl />
-        </Checkbox>
+        <n-space item-style="display: flex;" align="center" class="mr-2">
+          <n-checkbox size="large" />
+        </n-space>
         <button
           @click="removeFromWatchlist(id)"
           class="py-1 px-2 rounded bg-yellow-300"
@@ -28,12 +27,7 @@
 
 <script>
 import { inject } from "vue";
-import {
-  Checkbox,
-  CheckboxControl,
-  CheckboxInput,
-  CheckboxLabel,
-} from "@ark-ui/vue";
+import { NSpace, NCheckbox } from "naive-ui";
 
 export default {
   setup() {
@@ -42,6 +36,7 @@ export default {
     console.log("removeFromWatchList :", removeFromWatchlist);
     return { addToWatchlist, removeFromWatchlist };
   },
+  components: { NSpace, NCheckbox },
   props: {
     id: {
       type: Number,
