@@ -10,18 +10,30 @@
     </div>
 
     <div v-if="showCardVersion === 'mylist'">
-      <button
-        @click="removeFromWatchlist(id)"
-        class="py-1 px-2 rounded bg-yellow-300"
-      >
-        remove from list
-      </button>
+      <div class="flex">
+        <Checkbox>
+          <CheckboxInput />
+          <CheckboxControl />
+        </Checkbox>
+        <button
+          @click="removeFromWatchlist(id)"
+          class="py-1 px-2 rounded bg-yellow-300"
+        >
+          remove from list
+        </button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import { inject } from "vue";
+import {
+  Checkbox,
+  CheckboxControl,
+  CheckboxInput,
+  CheckboxLabel,
+} from "@ark-ui/vue";
 
 export default {
   setup() {
