@@ -1,16 +1,9 @@
-<script>
+<script setup>
 import { defineProps } from "vue";
 import ShowCard from "../reusable/cards/show-card/ShowCard.vue";
 
 const props = defineProps({
-  selectedShowData: { type: Object, required: true },
-});
-import { defineComponent } from "vue";
-
-export default defineComponent({
-  components: {
-    ShowCard,
-  },
+  selectedShowData: { type: Object, required: false },
 });
 </script>
 
