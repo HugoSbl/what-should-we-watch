@@ -4,7 +4,6 @@ import ShowCard from "../reusable/cards/show-card/ShowCard.vue";
 
 const props = defineProps({
   selectedShowData: { type: Object, required: true },
-  isPending: { type: Boolean, required: true },
 });
 import { defineComponent } from "vue";
 
@@ -16,15 +15,20 @@ export default defineComponent({
 </script>
 
 <template>
-  <ShowCard
-    v-if="selectedShowData"
-    :id="selectedShowData.id"
-    :title="selectedShowData.name"
-    :image="selectedShowData.image"
-    :premiered="selectedShowData.premiered"
-    :ended="selectedShowData.ended"
-    :rating="selectedShowData.rating"
-    :averageRuntime="selectedShowData.averageRuntime"
-    showCardVersion="randomizer"
-  />
+  <div>
+    <ShowCard
+      v-if="selectedShowData"
+      :id="selectedShowData.id"
+      :title="selectedShowData.name"
+      :image="selectedShowData.image"
+      :premiered="selectedShowData.premiered"
+      :ended="selectedShowData.ended"
+      :rating="selectedShowData.rating"
+      :averageRuntime="selectedShowData.averageRuntime"
+      showCardVersion="randomizer"
+    />
+    <div>
+      {{ selectedShowData.name }}
+    </div>
+  </div>
 </template>

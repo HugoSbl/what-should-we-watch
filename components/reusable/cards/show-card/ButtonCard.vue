@@ -2,6 +2,7 @@
   <div class="h-full flex items-center pr-2">
     <div v-if="showCardVersion === 'search'">
       <button
+        v-if="!isInWatchlist"
         class="py-1 px-2 rounded bg-yellow-300"
         @click="addToWatchlist(id)"
       >
@@ -22,11 +23,12 @@
         </button>
       </div>
     </div>
+    <div v-else></div>
   </div>
 </template>
 
 <script>
-import { inject, toRefs } from "vue";
+import { inject, toRefs, computed } from "vue";
 import { NSpace, NCheckbox } from "naive-ui";
 
 export default {
@@ -37,7 +39,7 @@ export default {
       required: true,
     },
     rating: {
-      type: Number,
+      type: Number || Object,
       required: true,
     },
     showCardVersion: {
@@ -47,6 +49,7 @@ export default {
   },
   setup(props) {
     const { id, rating } = toRefs(props);
+    const watchlist = inject("watchlist");
     const addToWatchlist = inject("addToWatchlist");
     const removeFromWatchlist = inject("removeFromWatchlist");
     const selectedWatchlistShows = inject("selectedWatchlistShows");
@@ -65,6 +68,9 @@ export default {
         selectedWatchlistShows.value.splice(index, 1);
       }
     };
+    const isInWatchlist = computed(() => {
+      return watchlist.value.includes(id.value);
+    });
 
     const handleCheckboxChange = (checked) => {
       console.log("Checkbox change:", {
@@ -83,6 +89,7 @@ export default {
       addToWatchlist,
       removeFromWatchlist,
       selectedWatchlistShows,
+      isInWatchlist,
       addToSelectedWatchlistShows,
       removeFromSelectedWatchlistShows,
       handleCheckboxChange,

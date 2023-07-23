@@ -4,13 +4,25 @@ import MyList from "../components/my-list/MyList.vue";
 import SelectRandomShow from "../components/random-show/SelectRandomShow.vue";
 import { useRoute } from "vue-router";
 const route = useRoute();
-import { ref, provide } from "vue";
+import { ref, provide, onMounted, watch } from "vue";
 
 const watchlist = ref([]);
 const selectedWatchlistShows = ref([]);
 
+onMounted(() => {
+  const storedWatchlist = localStorage.getItem("watchlist");
+  if (storedWatchlist) {
+    watchlist.value = JSON.parse(storedWatchlist);
+  }
+});
+
+watch(watchlist, (newWatchlist) => {
+  console.log("localStorage :", newWatchlist);
+  localStorage.setItem("watchlist", JSON.stringify(newWatchlist));
+});
+
 const addToWatchlist = (id) => {
-  watchlist.value.push(id);
+  watchlist.value = [...watchlist.value, id];
 };
 
 const removeFromWatchlist = (id) => {
@@ -35,14 +47,11 @@ provide("selectedWatchlistShows", selectedWatchlistShows);
 
 <template>
   <div>
-    <h1 class="">Nuxt Routing set up successfully!</h1>
-    <p>Current route: {{ route.path }}</p>
+    <div class="md:flex w-full">
+      <Search class="md:w-[50%]" />
+      <MyList class="md:w-[50%]" :watchlist="watchlist.value" />
+    </div>
 
-    <a href="https://nuxt.com/docs/getting-started/routing" target="_blank"
-      >Learn more about Nuxt Routing</a
-    >
-    <Search />
-    <MyList :watchlist="watchlist.value" />
     <SelectRandomShow />
   </div>
 </template>

@@ -38,7 +38,7 @@ onMounted(() => {
 
 <template>
   <SectionCard title="My list">
-    <div class="overflow-y-auto h-96">
+    <div class="overflow-y-auto max-h-[425px]">
       <div v-for="show in showsInWatchlist" :key="show.id">
         <ShowCard
           :id="show.id"

@@ -34,6 +34,7 @@
         </div>
         <div v-else class="ml-2">unknown date</div>
       </div>
+      <modal-show-card />
     </div>
     <ButtonCard :id="id" :rating="rating" :showCardVersion="showCardVersion" />
   </div>
@@ -41,9 +42,11 @@
 
 <script>
 import ButtonCard from "./ButtonCard.vue";
+import ModalShowCard from "./ModalShowCard.vue";
+import { watchEffect } from "vue";
 
 export default {
-  components: { ButtonCard },
+  components: { ButtonCard, ModalShowCard },
 
   props: {
     id: {
@@ -71,7 +74,7 @@ export default {
       required: false,
     },
     rating: {
-      type: Object,
+      type: Number || Object,
       required: false,
     },
     averageRuntime: {
@@ -82,6 +85,23 @@ export default {
       type: String,
       required: true,
     },
+  },
+
+  setup(props) {
+    watchEffect(() => {
+      console.log(
+        "all props in showCard :",
+        props.id,
+        props.title,
+        props.image,
+        props.links,
+        props.premiered,
+        props.ended,
+        props.rating,
+        props.averageRuntime,
+        props.showCardVersion
+      );
+    });
   },
 };
 </script>

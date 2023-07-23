@@ -2,10 +2,11 @@
   <SectionCard title="What should we watch tonight ?">
     <div class="w-full flex">
       <n-button @click="handleRandomizer">
-        Select a random show from selected ones in my list</n-button
-      >
+        Select a random show from selected ones in my list
+      </n-button>
     </div>
     <DisplayRandomShowCard
+      v-if="!isPending"
       :selectedShowData="selectedShow"
       :isPending="isPending"
     />
@@ -53,6 +54,7 @@ const handleRandomizer = async () => {
         console.log("error", error.value);
         return;
       }
+      isPending.value = pending.value;
       selectedShow.value = data.value;
 
       console.log("selected show : ", selectedShow.value);
