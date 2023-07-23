@@ -5,19 +5,24 @@
         Select a random show from selected ones in my list</n-button
       >
     </div>
+    <DisplayRandomShowCard :selectedShow="selectedShow" />
   </SectionCard>
 </template>
 
 <script setup>
-import { inject } from "vue";
+import { ref, inject } from "vue";
 import SectionCard from "../reusable/cards/SectionCard.vue";
+import DisplayRandomShowCard from "./DisplayRandomShowCard.vue";
 import { NButton } from "naive-ui";
 
 const selectedWatchlistShows = inject("selectedWatchlistShows");
 
+let selectedShow = ref(null); // To hold the selected show
+let alreadySelectedShows = ref([]); // To hold the shows that have already been selected
+
 const handleRandomizer = () => {
   if (selectedWatchlistShows.value.length > 0) {
-    const weightedShows = [];
+    let weightedShows = [];
 
     selectedWatchlistShows.value.forEach((show) => {
       // Assuming rating is between 0 and 10, you can adjust accordingly
@@ -28,14 +33,23 @@ const handleRandomizer = () => {
         weightedShows.push(show);
       }
     });
-    console.log("weightedShows", weightedShows);
-    const randomIndex = Math.floor(Math.random() * weightedShows.length);
-    console.log("randomIndex", randomIndex);
-    const selectedShow = weightedShows[randomIndex];
 
-    console.log("Randomly selected show:", selectedShow);
+    weightedShows = weightedShows.filter(
+      (show) => !alreadySelectedShows.value.includes(show.id)
+    );
+
+    if (weightedShows.length > 0) {
+      const randomIndex = Math.floor(Math.random() * weightedShows.length);
+      selectedShow.value = weightedShows[randomIndex];
+
+      alreadySelectedShows.value.push(selectedShow.value.id);
+
+      console.log("Randomly selected show:", selectedShow.value);
+    } else {
+      console.log("All shows have been selected"); // rajouter un toast ici
+    }
   } else {
-    console.log("No shows selected");
+    console.log("No shows selected"); // rajouter un toast ici
   }
 };
 </script>
