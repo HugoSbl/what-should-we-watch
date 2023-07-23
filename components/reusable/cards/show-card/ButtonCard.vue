@@ -52,7 +52,7 @@ export default {
     const selectedWatchlistShows = inject("selectedWatchlistShows");
 
     const addToSelectedWatchlistShows = (id, rating) => {
-      selectedWatchlistShows.value.push({ id, rating });
+      selectedWatchlistShows.value.push({ id: id, rating: rating });
       console.log("selectedWatchlistShows", selectedWatchlistShows.value);
     };
 
@@ -67,6 +67,11 @@ export default {
     };
 
     const handleCheckboxChange = (checked) => {
+      console.log("Checkbox change:", {
+        checked,
+        id: id.value,
+        rating: rating.value,
+      });
       if (checked) {
         addToSelectedWatchlistShows(id.value, rating.value);
       } else {

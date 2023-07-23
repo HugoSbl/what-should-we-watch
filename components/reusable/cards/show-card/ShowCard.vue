@@ -35,7 +35,7 @@
         <div v-else class="ml-2">unknown date</div>
       </div>
     </div>
-    <ButtonCard :id="id" :showCardVersion="showCardVersion" />
+    <ButtonCard :id="id" :rating="rating" :showCardVersion="showCardVersion" />
   </div>
 </template>
 
