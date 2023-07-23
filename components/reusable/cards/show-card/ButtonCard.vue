@@ -2,8 +2,8 @@
   <div class="h-full flex items-center pr-2">
     <div v-if="showCardVersion === 'search'">
       <button
-        @click="addToWatchlist(id)"
         class="py-1 px-2 rounded bg-yellow-300"
+        @click="addToWatchlist(id)"
       >
         Add to watchlist
       </button>
@@ -15,8 +15,8 @@
           <n-checkbox size="large" @change="handleCheckboxChange" />
         </n-space>
         <button
-          @click="removeFromWatchlist(id)"
           class="py-1 px-2 rounded bg-yellow-300"
+          @click="removeFromWatchlist(id)"
         >
           remove from list
         </button>
@@ -30,18 +30,36 @@ import { inject, toRefs } from "vue";
 import { NSpace, NCheckbox } from "naive-ui";
 
 export default {
+  components: { NSpace, NCheckbox },
+  props: {
+    id: {
+      type: Number,
+      required: true,
+    },
+    rating: {
+      type: Number,
+      required: true,
+    },
+    showCardVersion: {
+      type: String,
+      required: true,
+    },
+  },
   setup(props) {
-    const { id } = toRefs(props);
+    const { id, rating } = toRefs(props);
     const addToWatchlist = inject("addToWatchlist");
     const removeFromWatchlist = inject("removeFromWatchlist");
     const selectedWatchlistShows = inject("selectedWatchlistShows");
 
-    const addToSelectedWatchlistShows = (id) => {
-      selectedWatchlistShows.value.push(id);
+    const addToSelectedWatchlistShows = (id, rating) => {
+      selectedWatchlistShows.value.push({ id, rating });
       console.log("selectedWatchlistShows", selectedWatchlistShows.value);
     };
+
     const removeFromSelectedWatchlistShows = (id) => {
-      const index = selectedWatchlistShows.value.indexOf(id);
+      const index = selectedWatchlistShows.value.findIndex(
+        (show) => show.id === id
+      );
       if (index !== -1) {
         selectedWatchlistShows.value.splice(index, 1);
         console.log("selectedWatchlistShows", selectedWatchlistShows.value);
@@ -50,7 +68,7 @@ export default {
 
     const handleCheckboxChange = (checked) => {
       if (checked) {
-        addToSelectedWatchlistShows(id.value);
+        addToSelectedWatchlistShows(id.value, rating.value);
       } else {
         removeFromSelectedWatchlistShows(id.value);
       }
@@ -64,17 +82,6 @@ export default {
       removeFromSelectedWatchlistShows,
       handleCheckboxChange,
     };
-  },
-  components: { NSpace, NCheckbox },
-  props: {
-    id: {
-      type: Number,
-      required: true,
-    },
-    showCardVersion: {
-      type: String,
-      required: true,
-    },
   },
 };
 </script>

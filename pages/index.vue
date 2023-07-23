@@ -12,12 +12,16 @@ const selectedWatchlistShows = ref([]);
 const addToWatchlist = (id) => {
   watchlist.value.push(id);
 };
+
 const removeFromWatchlist = (id) => {
-  const index = watchlist.value.indexOf(id);
+  console.log("watchlist :", watchlist.value);
+  const index = watchlist.value.findIndex((showId) => showId === id);
   if (index !== -1) {
     watchlist.value.splice(index, 1);
   }
-  const selectedIndex = selectedWatchlistShows.value.indexOf(id);
+  const selectedIndex = selectedWatchlistShows.value.findIndex(
+    (show) => show.id === id
+  );
   if (selectedIndex !== -1) {
     selectedWatchlistShows.value.splice(selectedIndex, 1);
   }
@@ -38,7 +42,7 @@ provide("selectedWatchlistShows", selectedWatchlistShows);
       >Learn more about Nuxt Routing</a
     >
     <Search />
-    <MyList watchlist="watchlist.value" />
+    <MyList :watchlist="watchlist.value" />
     <SelectRandomShow />
   </div>
 </template>

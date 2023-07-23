@@ -31,8 +31,8 @@ watchEffect(async () => {
   <SectionCard title="Search">
     <div class="flex flex-col">
       <input
-        class="w-full border-2 rounded border-gray-400 p-2"
         v-model="searchInput"
+        class="w-full border-2 rounded border-gray-400 p-2"
         placeholder="search for a show"
       />
 
