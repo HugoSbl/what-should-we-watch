@@ -1,23 +1,58 @@
 <script setup>
-import { ref, watchEffect } from "vue";
+import { ref, watchEffect, inject, onMounted } from "vue";
 import GlobalCards from "../reusable/cards/global-card.vue";
 import { useFetch } from "nuxt/app";
 import ShowCard from "../reusable/cards/show-card/ShowCard.vue";
 
-import { defineProps } from "vue";
+const watchlistIds = inject("watchlist");
+const showsInWatchlist = ref([]);
 
-const { watchlist } = defineProps({
-  watchlist: Array,
-});
-watchEffect(() => {
-  console.log("watchlist props : ", watchlist.value);
+onMounted(() => {
+  watchEffect(async () => {
+    const uniqueIds = Array.from(new Set(watchlistIds.value));
+    const newShowsInWatchlist = [];
+
+    for (const id of uniqueIds) {
+      const show = showsInWatchlist.value.find((show) => show.id === id);
+
+      if (show) {
+        newShowsInWatchlist.push(show);
+      } else {
+        const { data, error, execute } = useFetch(
+          `https://api.tvmaze.com/shows/${id}`
+        );
+
+        await execute();
+
+        if (error.value) {
+          console.log("error", error.value);
+          return;
+        }
+
+        newShowsInWatchlist.push(data.value);
+      }
+    }
+
+    showsInWatchlist.value = newShowsInWatchlist;
+  });
 });
 </script>
 
 <template>
   <GlobalCards title="My list">
-    <div v-for="(show, index) in watchlist" :key="index">
-      <div>Test</div>
+    <div class="overflow-y-auto h-96">
+      <div v-for="show in showsInWatchlist" :key="show.id">
+        <ShowCard
+          :id="show.id"
+          :title="show.name"
+          :image="show.image"
+          :premiered="show.premiered"
+          :ended="show.ended"
+          :rating="show.rating"
+          :averageRuntime="show.averageRuntime"
+          showCardVersion="mylist"
+        />
+      </div>
     </div>
   </GlobalCards>
 </template>

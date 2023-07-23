@@ -6,16 +6,26 @@ const route = useRoute();
 import { ref, provide } from "vue";
 
 const watchlist = ref([]);
+const selectedWatchlistShows = ref([]);
 
 const addToWatchlist = (id) => {
   watchlist.value.push(id);
-  console.log("id added to watchlist :", id);
-  console.log("watchlist", watchlist.value);
+};
+const removeFromWatchlist = (id) => {
+  const index = watchlist.value.indexOf(id);
+  if (index !== -1) {
+    watchlist.value.splice(index, 1);
+  }
+  const selectedIndex = selectedWatchlistShows.value.indexOf(id);
+  if (selectedIndex !== -1) {
+    selectedWatchlistShows.value.splice(selectedIndex, 1);
+  }
 };
 
 provide("watchlist", watchlist);
 provide("addToWatchlist", addToWatchlist);
-console.log("watchlist", watchlist.value);
+provide("removeFromWatchlist", removeFromWatchlist);
+provide("selectedWatchlistShows", selectedWatchlistShows);
 </script>
 
 <template>
