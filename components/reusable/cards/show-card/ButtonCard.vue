@@ -52,7 +52,9 @@ export default {
     const selectedWatchlistShows = inject("selectedWatchlistShows");
 
     const addToSelectedWatchlistShows = (id, rating) => {
-      selectedWatchlistShows.value.push({ id: id, rating: rating.average });
+      rating = rating.average || 5; // if no rating available, rating is set to 5
+      selectedWatchlistShows.value.push({ id: id, rating: rating });
+      console.log("selectedWatchlistShows", selectedWatchlistShows.value);
     };
 
     const removeFromSelectedWatchlistShows = (id) => {
