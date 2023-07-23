@@ -1,6 +1,7 @@
 <script setup>
 import Search from "../components/search/Search.vue";
 import MyList from "../components/my-list/MyList.vue";
+import SelectRandomShow from "../components/random-show/SelectRandomShow.vue";
 import { useRoute } from "vue-router";
 const route = useRoute();
 import { ref, provide } from "vue";
@@ -38,5 +39,6 @@ provide("selectedWatchlistShows", selectedWatchlistShows);
     >
     <Search />
     <MyList watchlist="watchlist.value" />
+    <SelectRandomShow />
   </div>
 </template>

@@ -1,6 +1,6 @@
 <script setup>
 import { ref, watchEffect, inject, onMounted } from "vue";
-import GlobalCards from "../reusable/cards/global-card.vue";
+import SectionCard from "../reusable/cards/SectionCard.vue";
 import { useFetch } from "nuxt/app";
 import ShowCard from "../reusable/cards/show-card/ShowCard.vue";
 
@@ -39,7 +39,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <GlobalCards title="My list">
+  <SectionCard title="My list">
     <div class="overflow-y-auto h-96">
       <div v-for="show in showsInWatchlist" :key="show.id">
         <ShowCard
@@ -54,5 +54,5 @@ onMounted(() => {
         />
       </div>
     </div>
-  </GlobalCards>
+  </SectionCard>
 </template>
