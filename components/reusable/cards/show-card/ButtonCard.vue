@@ -52,7 +52,8 @@ export default {
     const selectedWatchlistShows = inject("selectedWatchlistShows");
 
     const addToSelectedWatchlistShows = (id, rating) => {
-      selectedWatchlistShows.value.push({ id: id, rating: rating });
+      console.log("addToSelectedWatchlistShows", id, rating.average);
+      selectedWatchlistShows.value.push({ id: id, rating: rating.average });
       console.log("selectedWatchlistShows", selectedWatchlistShows.value);
     };
 

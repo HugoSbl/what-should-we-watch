@@ -28,9 +28,9 @@ const handleRandomizer = () => {
         weightedShows.push(show);
       }
     });
-
+    console.log("weightedShows", weightedShows);
     const randomIndex = Math.floor(Math.random() * weightedShows.length);
-
+    console.log("randomIndex", randomIndex);
     const selectedShow = weightedShows[randomIndex];
 
     console.log("Randomly selected show:", selectedShow);
