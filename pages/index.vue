@@ -6,22 +6,22 @@ const route = useRoute();
 import { ref, provide } from "vue";
 
 const watchlist = ref([]);
+const selectedWatchlistShows = ref([]);
 
 const addToWatchlist = (id) => {
   watchlist.value.push(id);
 };
-
 const removeFromWatchlist = (id) => {
   const index = watchlist.value.indexOf(id);
   if (index !== -1) {
     watchlist.value.splice(index, 1);
   }
-  console.log("watchlist.value remove :", watchlist.value);
 };
 
 provide("watchlist", watchlist);
 provide("addToWatchlist", addToWatchlist);
-provide("removeFromWatchlist", removeFromWatchlist); // Provide this function to child components
+provide("removeFromWatchlist", removeFromWatchlist);
+provide("selectedWatchlistShows", selectedWatchlistShows);
 </script>
 
 <template>

@@ -12,7 +12,7 @@
     <div v-if="showCardVersion === 'mylist'">
       <div class="flex">
         <n-space item-style="display: flex;" align="center" class="mr-2">
-          <n-checkbox size="large" />
+          <n-checkbox size="large" @change="handleCheckboxChange" />
         </n-space>
         <button
           @click="removeFromWatchlist(id)"
@@ -26,15 +26,44 @@
 </template>
 
 <script>
-import { inject } from "vue";
+import { inject, toRefs } from "vue";
 import { NSpace, NCheckbox } from "naive-ui";
 
 export default {
-  setup() {
+  setup(props) {
+    const { id } = toRefs(props);
     const addToWatchlist = inject("addToWatchlist");
     const removeFromWatchlist = inject("removeFromWatchlist");
-    console.log("removeFromWatchList :", removeFromWatchlist);
-    return { addToWatchlist, removeFromWatchlist };
+    const selectedWatchlistShows = inject("selectedWatchlistShows");
+
+    const addToSelectedWatchlistShows = (id) => {
+      selectedWatchlistShows.value.push(id);
+      console.log("selectedWatchlistShows", selectedWatchlistShows.value);
+    };
+    const removeFromSelectedWatchlistShows = (id) => {
+      const index = selectedWatchlistShows.value.indexOf(id);
+      if (index !== -1) {
+        selectedWatchlistShows.value.splice(index, 1);
+        console.log("selectedWatchlistShows", selectedWatchlistShows.value);
+      }
+    };
+
+    const handleCheckboxChange = (checked) => {
+      if (checked) {
+        addToSelectedWatchlistShows(id.value);
+      } else {
+        removeFromSelectedWatchlistShows(id.value);
+      }
+    };
+
+    return {
+      addToWatchlist,
+      removeFromWatchlist,
+      selectedWatchlistShows,
+      addToSelectedWatchlistShows,
+      removeFromSelectedWatchlistShows,
+      handleCheckboxChange,
+    };
   },
   components: { NSpace, NCheckbox },
   props: {
