@@ -5,39 +5,35 @@ import { useFetch } from "nuxt/app";
 import ShowCard from "../reusable/cards/show-card/ShowCard.vue";
 
 const watchlistIds = inject("watchlist");
-const showsInWatchlist = ref({});
+const showsInWatchlist = ref([]);
 
 onMounted(() => {
   watchEffect(async () => {
-    // Create a new array from the set of ids, which removes duplicates
     const uniqueIds = Array.from(new Set(watchlistIds.value));
+    const newShowsInWatchlist = [];
 
     for (const id of uniqueIds) {
-      // If the show for this id has already been fetched, skip to the next id
-      if (showsInWatchlist.value[id]) {
-        continue;
-      }
+      const show = showsInWatchlist.value.find((show) => show.id === id);
 
-      const { data, error, execute } = useFetch(
-        `https://api.tvmaze.com/shows/${id}`
-      );
+      if (show) {
+        newShowsInWatchlist.push(show);
+      } else {
+        const { data, error, execute } = useFetch(
+          `https://api.tvmaze.com/shows/${id}`
+        );
 
-      await execute();
+        await execute();
 
-      if (error.value) {
-        console.log("error", error.value);
-        return;
-      }
+        if (error.value) {
+          console.log("error", error.value);
+          return;
+        }
 
-      showsInWatchlist.value[id] = data.value;
-      console.log("shows", shows.value);
-    }
-
-    for (const id in showsInWatchlist.value) {
-      if (!uniqueIds.includes(Number(id))) {
-        delete shows.value[id];
+        newShowsInWatchlist.push(data.value);
       }
     }
+
+    showsInWatchlist.value = newShowsInWatchlist;
   });
 });
 </script>
@@ -45,7 +41,7 @@ onMounted(() => {
 <template>
   <GlobalCards title="My list">
     <div class="overflow-y-auto h-96">
-      <div v-for="(show, index) in showsInWatchlist" :key="index">
+      <div v-for="show in showsInWatchlist" :key="show.id">
         <ShowCard
           :id="show.id"
           :title="show.name"

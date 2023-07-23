@@ -16,6 +16,10 @@ const removeFromWatchlist = (id) => {
   if (index !== -1) {
     watchlist.value.splice(index, 1);
   }
+  const selectedIndex = selectedWatchlistShows.value.indexOf(id);
+  if (selectedIndex !== -1) {
+    selectedWatchlistShows.value.splice(selectedIndex, 1);
+  }
 };
 
 provide("watchlist", watchlist);
