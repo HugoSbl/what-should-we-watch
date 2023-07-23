@@ -5,29 +5,32 @@
         Select a random show from selected ones in my list</n-button
       >
     </div>
-    <DisplayRandomShowCard :selectedShow="selectedShow" />
+    <DisplayRandomShowCard
+      :selectedShowData="selectedShow"
+      :isPending="isPending"
+    />
   </SectionCard>
 </template>
 
 <script setup>
 import { ref, inject } from "vue";
+import { useFetch } from "nuxt/app";
 import SectionCard from "../reusable/cards/SectionCard.vue";
 import DisplayRandomShowCard from "./DisplayRandomShowCard.vue";
 import { NButton } from "naive-ui";
 
 const selectedWatchlistShows = inject("selectedWatchlistShows");
+const isPending = ref(true);
 
-let selectedShow = ref(null); // To hold the selected show
-let alreadySelectedShows = ref([]); // To hold the shows that have already been selected
+let selectedShow = ref(null);
+let alreadySelectedShows = ref([]);
 
-const handleRandomizer = () => {
+const handleRandomizer = async () => {
   if (selectedWatchlistShows.value.length > 0) {
     let weightedShows = [];
 
     selectedWatchlistShows.value.forEach((show) => {
-      // Assuming rating is between 0 and 10, you can adjust accordingly
       const count = Math.floor(show.rating);
-      console.log("show", show);
       for (let i = 0; i < count; i++) {
         // Create an array with shows repeated as per their ratings
         weightedShows.push(show);
@@ -43,13 +46,23 @@ const handleRandomizer = () => {
       selectedShow.value = weightedShows[randomIndex];
 
       alreadySelectedShows.value.push(selectedShow.value.id);
+      const { data, error, pending } = await useFetch(
+        `https://api.tvmaze.com/shows/${selectedShow.value.id}`
+      );
+      if (error.value) {
+        console.log("error", error.value);
+        return;
+      }
+      selectedShow.value = data.value;
 
-      console.log("Randomly selected show:", selectedShow.value);
+      console.log("selected show : ", selectedShow.value);
+      isPending.value = pending.value;
+      console.log("isPending : ", isPending.value);
     } else {
-      console.log("All shows have been selected"); // rajouter un toast ici
+      console.log("All shows have been selected"); // add a toast here
     }
   } else {
-    console.log("No shows selected"); // rajouter un toast ici
+    console.log("No shows selected"); // add a toast here
   }
 };
 </script>

@@ -1,14 +1,30 @@
-<template>
-  <ShowCard />
-</template>
-
 <script>
-import { defineProps, toRef } from "vue";
-import ShowCard from "../../components/reusable/cards/show-card/ShowCard.vue";
+import { defineProps } from "vue";
+import ShowCard from "../reusable/cards/show-card/ShowCard.vue";
 
 const props = defineProps({
-  selectedShow: { type: Object, required: true },
+  selectedShowData: { type: Object, required: true },
+  isPending: { type: Boolean, required: true },
 });
+import { defineComponent } from "vue";
 
-const selectedShow = toRef(props, "selectedShow");
+export default defineComponent({
+  components: {
+    ShowCard,
+  },
+});
 </script>
+
+<template>
+  <ShowCard
+    v-if="selectedShowData"
+    :id="selectedShowData.id"
+    :title="selectedShowData.name"
+    :image="selectedShowData.image"
+    :premiered="selectedShowData.premiered"
+    :ended="selectedShowData.ended"
+    :rating="selectedShowData.rating"
+    :averageRuntime="selectedShowData.averageRuntime"
+    showCardVersion="randomizer"
+  />
+</template>

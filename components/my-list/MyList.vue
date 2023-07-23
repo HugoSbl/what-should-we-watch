@@ -18,11 +18,9 @@ onMounted(() => {
       if (show) {
         newShowsInWatchlist.push(show);
       } else {
-        const { data, error, execute } = useFetch(
+        const { data, error } = await useFetch(
           `https://api.tvmaze.com/shows/${id}`
         );
-
-        await execute();
 
         if (error.value) {
           console.log("error", error.value);
