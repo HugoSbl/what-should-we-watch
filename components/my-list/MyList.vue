@@ -3,7 +3,7 @@ import { ref, watchEffect, inject, onMounted, computed } from "vue";
 import SectionCard from "../reusable/cards/SectionCard.vue";
 import { useFetch } from "nuxt/app";
 import ShowCard from "../reusable/cards/show-card/ShowCard.vue";
-import { NSelect } from "naive-ui";
+import { NSelect } from "naive-ui/es/select";
 
 const watchlistIds = inject("watchlist");
 const showsInWatchlist = ref([]);
