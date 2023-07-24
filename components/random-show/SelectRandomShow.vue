@@ -4,12 +4,12 @@
       <n-button @click="handleRandomizer">
         Select a random show from selected ones in my list
       </n-button>
+      <DisplayRandomShowCard
+        v-if="!isPending"
+        :selectedShowData="selectedShow"
+        :isPending="isPending"
+      />
     </div>
-    <DisplayRandomShowCard
-      v-if="!isPending"
-      :selectedShowData="selectedShow"
-      :isPending="isPending"
-    />
   </SectionCard>
 </template>
 
