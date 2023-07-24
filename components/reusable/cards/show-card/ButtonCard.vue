@@ -1,26 +1,31 @@
 <template>
   <div class="h-full flex items-center pr-2">
     <div v-if="showCardVersion === 'search'">
-      <button
+      <NButton
         v-if="!isInWatchlist"
-        class="py-1 px-2 rounded bg-yellow-300"
+        class="text-xl"
+        strong
+        secondary
+        type="primary"
         @click="addToWatchlist(id)"
+        >Add</NButton
       >
-        Add to watchlist
-      </button>
     </div>
 
     <div v-if="showCardVersion === 'mylist'">
       <div class="flex">
-        <n-space item-style="display: flex;" align="center" class="mr-2">
-          <n-checkbox size="large" @change="handleCheckboxChange" />
-        </n-space>
-        <button
-          class="py-1 px-2 rounded bg-yellow-300"
+        <NSpace item-style="display: flex;" align="center" class="mr-2">
+          <NCheckbox size="large" @change="handleCheckboxChange" />
+        </NSpace>
+
+        <NButton
+          class="text-xl"
+          strong
+          secondary
+          type="error"
           @click="removeFromWatchlist(id)"
+          >Delete</NButton
         >
-          remove from list
-        </button>
       </div>
     </div>
     <div v-else></div>
@@ -29,10 +34,10 @@
 
 <script>
 import { inject, toRefs, computed } from "vue";
-import { NSpace, NCheckbox } from "naive-ui";
+import { NSpace, NCheckbox, NButton } from "naive-ui";
 
 export default {
-  components: { NSpace, NCheckbox },
+  components: { NSpace, NCheckbox, NButton },
   props: {
     id: {
       type: Number,

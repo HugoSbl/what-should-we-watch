@@ -1,29 +1,41 @@
 <template>
-  <div class="flex h-36 mb-2 justify-between">
-    <div class="flex">
-      <img
-        v-if="image"
-        :src="image.medium"
-        alt="Show image"
-        class="rounded-lg w-24"
-      />
-      <div v-else class="w-24">No image</div>
+  <div class="flex h-36 mb-2 justify-between select-none hover:bg-black/20">
+    <div class="flex items-center">
+      <div class="flex-shrink-0 w-24">
+        <img
+          v-if="image"
+          :src="image.medium"
+          class="rounded-lg aspect-auto"
+          :alt="title"
+        />
+        <div v-else class="">No image</div>
+      </div>
 
-      <div>
-        <div class="ml-2 font-black">{{ title }}</div>
-        <div class="flex">
-          <div class="ml-2 rounded bg-slate-400 inline-block text-white p-1">
-            <div v-if="rating && rating.average">{{ rating.average }}</div>
+      <div class="md:ml-4 ml-2 space-y-2">
+        <div class="font-black text-sm md:text-base line-clamp-1">
+          {{ title }}
+        </div>
+        <div
+          class="inline-flex md:flex-row flex-col md:space-x-1 space-y-1 md:space-y-0"
+        >
+          <div
+            class="rounded text-sm bg-slate-400/70 inline-block text-white px-1"
+          >
+            <div v-if="rating && rating.average" class="flex items-center">
+              {{ rating.average }}<Star class="ml-1" :size="14" />
+            </div>
             <div v-else>no rating</div>
           </div>
-          <div class="ml-2 rounded bg-slate-400 inline-block text-white p-1">
+          <div
+            class="rounded text-sm bg-slate-400/70 inline-block text-white px-1"
+          >
             <div v-if="averageRuntime">{{ averageRuntime }} min</div>
             <div v-else>unknown runtime</div>
           </div>
         </div>
 
         <div v-if="premiered" class="flex">
-          <div class="ml-2">
+          <div class="">
             <div v-if="premiered">{{ premiered.slice(0, 4) }}</div>
           </div>
           <div>-</div>
@@ -32,9 +44,9 @@
             <div v-else>ongoing</div>
           </div>
         </div>
-        <div v-else class="ml-2">unknown date</div>
+        <div v-else class="">unknown date</div>
+        <dialog-show-card />
       </div>
-      <modal-show-card />
     </div>
     <ButtonCard :id="id" :rating="rating" :showCardVersion="showCardVersion" />
   </div>
@@ -42,11 +54,12 @@
 
 <script>
 import ButtonCard from "./ButtonCard.vue";
-import ModalShowCard from "./ModalShowCard.vue";
 import { watchEffect } from "vue";
+import DialogShowCard from "./DialogShowCard.vue";
+import { Star } from "lucide-vue-next";
 
 export default {
-  components: { ButtonCard, ModalShowCard },
+  components: { ButtonCard, DialogShowCard, Star },
 
   props: {
     id: {
@@ -85,23 +98,6 @@ export default {
       type: String,
       required: true,
     },
-  },
-
-  setup(props) {
-    watchEffect(() => {
-      console.log(
-        "all props in showCard :",
-        props.id,
-        props.title,
-        props.image,
-        props.links,
-        props.premiered,
-        props.ended,
-        props.rating,
-        props.averageRuntime,
-        props.showCardVersion
-      );
-    });
   },
 };
 </script>

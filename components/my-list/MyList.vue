@@ -90,13 +90,13 @@ onMounted(() => {
   <SectionCard title="My list">
     <div class="flex">
       <ClientOnly>
-        <n-select
+        <NSelect
           v-model:value="selectedSort"
           size="tiny"
           :options="sortOptions"
           placeholder="Sort by"
         />
-        <n-select
+        <NSelect
           v-model:value="selectedRuntime"
           size="tiny"
           :options="runtimeOptions"

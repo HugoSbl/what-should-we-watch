@@ -32,7 +32,7 @@ watchEffect(async () => {
     <div class="flex flex-col">
       <input
         v-model="searchInput"
-        class="w-full border-2 rounded border-gray-400 p-2"
+        class="w-full rounded text-white border-white/10 p-2 bg-white/10 mb-2"
         placeholder="search for a show"
       />
 

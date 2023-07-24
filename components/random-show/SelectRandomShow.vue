@@ -1,14 +1,18 @@
 <template>
   <SectionCard title="What should we watch tonight ?">
-    <div class="w-full flex">
-      <n-button @click="handleRandomizer">
-        Select a random show from selected ones in my list
-      </n-button>
-      <DisplayRandomShowCard
-        v-if="!isPending"
-        :selectedShowData="selectedShow"
-        :isPending="isPending"
-      />
+    <div class="w-full flex flex-col md:flex-row">
+      <div class="items-center justify-center flex w-full">
+        <NButton strong type="tertiary" @click="handleRandomizer">
+          Select a random show from selected ones in my list
+        </NButton>
+      </div>
+      <div v-if="selectedShow" class="md:w-full">
+        <DisplayRandomShowCard
+          v-if="!isPending"
+          :selectedShowData="selectedShow"
+          :isPending="isPending"
+        />
+      </div>
     </div>
   </SectionCard>
 </template>

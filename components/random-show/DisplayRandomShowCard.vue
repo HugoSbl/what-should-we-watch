@@ -8,20 +8,21 @@ const props = defineProps({
 </script>
 
 <template>
-  <div>
-    <ShowCard
-      v-if="selectedShowData"
-      :id="selectedShowData.id"
-      :title="selectedShowData.name"
-      :image="selectedShowData.image"
-      :premiered="selectedShowData.premiered"
-      :ended="selectedShowData.ended"
-      :rating="selectedShowData.rating"
-      :averageRuntime="selectedShowData.averageRuntime"
-      showCardVersion="randomizer"
-    />
-    <div>
-      {{ selectedShowData.name }}
+  <div class="flex flex-col">
+    <div class="md:border-2 p-2 border-white/20 rounded-lg">
+      <ShowCard
+        v-if="selectedShowData"
+        :id="selectedShowData.id"
+        :title="selectedShowData.name"
+        :image="selectedShowData.image"
+        :premiered="selectedShowData.premiered"
+        :ended="selectedShowData.ended"
+        :rating="selectedShowData.rating"
+        :averageRuntime="selectedShowData.averageRuntime"
+        :summary="selectedShowData.summary"
+        showCardVersion="randomizer"
+      />
+      <div class="" v-html="selectedShowData.summary"></div>
     </div>
   </div>
 </template>
