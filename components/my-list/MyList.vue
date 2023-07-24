@@ -89,18 +89,20 @@ onMounted(() => {
 <template>
   <SectionCard title="My list">
     <div class="flex">
-      <n-select
-        v-model:value="selectedSort"
-        size="tiny"
-        :options="sortOptions"
-        placeholder="Sort by"
-      />
-      <n-select
-        v-model:value="selectedRuntime"
-        size="tiny"
-        :options="runtimeOptions"
-        placeholder="Runtime"
-      />
+      <ClientOnly>
+        <n-select
+          v-model:value="selectedSort"
+          size="tiny"
+          :options="sortOptions"
+          placeholder="Sort by"
+        />
+        <n-select
+          v-model:value="selectedRuntime"
+          size="tiny"
+          :options="runtimeOptions"
+          placeholder="Runtime"
+        />
+      </ClientOnly>
     </div>
     <div class="overflow-y-auto max-h-[400px] flex items-center justify-center">
       <div v-if="showsInWatchlist.length > 0">
