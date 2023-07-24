@@ -22,7 +22,7 @@ import { ref, inject } from "vue";
 import { useFetch } from "nuxt/app";
 import SectionCard from "../reusable/cards/SectionCard.vue";
 import DisplayRandomShowCard from "./DisplayRandomShowCard.vue";
-import { NButton } from "naive-ui";
+import { NButton } from "naive-ui/es/button";
 
 const selectedWatchlistShows = inject("selectedWatchlistShows");
 const isPending = ref(true);

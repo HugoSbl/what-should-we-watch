@@ -34,7 +34,9 @@
 
 <script>
 import { inject, toRefs, computed } from "vue";
-import { NSpace, NCheckbox, NButton } from "naive-ui";
+import { NSpace } from "naive-ui/es/space";
+import { NCheckbox } from "naive-ui/es/checkbox";
+import { NButton } from "naive-ui/es/button";
 
 export default {
   components: { NSpace, NCheckbox, NButton },
