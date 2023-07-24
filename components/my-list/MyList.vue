@@ -104,7 +104,7 @@ onMounted(() => {
         />
       </ClientOnly>
     </div>
-    <div class="overflow-y-auto max-h-[400px] flex items-center justify-center">
+    <div class="overflow-y-auto max-h-[400px] flex justify-center">
       <div v-if="showsInWatchlist.length > 0">
         <div v-for="show in filteredAndSortedShowsInWatchlist" :key="show.id">
           <ShowCard

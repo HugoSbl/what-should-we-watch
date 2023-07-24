@@ -26,16 +26,17 @@ const addToWatchlist = (id) => {
 };
 
 const removeFromWatchlist = (id) => {
-  console.log("watchlist :", watchlist.value);
-  const index = watchlist.value.findIndex((showId) => showId === id);
-  if (index !== -1) {
-    watchlist.value.splice(index, 1);
-  }
+  const newWatchlist = watchlist.value.filter((showId) => showId !== id);
+  watchlist.value = newWatchlist;
+
   const selectedIndex = selectedWatchlistShows.value.findIndex(
     (show) => show.id === id
   );
   if (selectedIndex !== -1) {
-    selectedWatchlistShows.value.splice(selectedIndex, 1);
+    const newSelectedWatchlistShows = selectedWatchlistShows.value.filter(
+      (show) => show.id !== id
+    );
+    selectedWatchlistShows.value = newSelectedWatchlistShows;
   }
 };
 
