@@ -1,4 +1,4 @@
-<script setup>
+<script>
 import {
   DialogRoot,
   DialogTrigger,
@@ -9,6 +9,19 @@ import {
   DialogTitle,
   DialogDescription,
 } from "radix-vue";
+
+export default {
+  components: {
+    DialogRoot,
+    DialogTrigger,
+    DialogContent,
+    DialogOverlay,
+    DialogClose,
+    DialogPortal,
+    DialogTitle,
+    DialogDescription,
+  },
+};
 </script>
 
 <template>
@@ -16,7 +29,6 @@ import {
     <DialogTrigger> Test </DialogTrigger>
     <DialogPortal>
       <DialogOverlay />
-      C'est ouf ca
       <DialogContent>
         <DialogTitle>This is it</DialogTitle>
         <DialogDescription />
@@ -25,3 +37,5 @@ import {
     </DialogPortal>
   </DialogRoot>
 </template>
+
+<style></style>
