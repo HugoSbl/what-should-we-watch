@@ -1,5 +1,5 @@
 <template>
-  <div class="flex h-36 mb-2 justify-between">
+  <div class="flex h-36 mb-2 justify-between hover:bg-black/10">
     <div class="flex">
       <img
         v-if="image"
@@ -10,7 +10,7 @@
       <div v-else class="w-24">No image</div>
 
       <div>
-        <div class="ml-2 font-black">{{ title }}</div>
+        <div class="ml-2 font-black text-base">{{ title }}</div>
         <div class="flex">
           <div class="ml-2 rounded bg-slate-400 inline-block text-white p-1">
             <div v-if="rating && rating.average">{{ rating.average }}</div>
@@ -33,8 +33,8 @@
           </div>
         </div>
         <div v-else class="ml-2">unknown date</div>
+        <dialog-show-card />
       </div>
-      <modal-show-card />
     </div>
     <ButtonCard :id="id" :rating="rating" :showCardVersion="showCardVersion" />
   </div>
@@ -42,11 +42,11 @@
 
 <script>
 import ButtonCard from "./ButtonCard.vue";
-import ModalShowCard from "./ModalShowCard.vue";
 import { watchEffect } from "vue";
+import DialogShowCard from "./DialogShowCard.vue";
 
 export default {
-  components: { ButtonCard, ModalShowCard },
+  components: { ButtonCard, DialogShowCard },
 
   props: {
     id: {
