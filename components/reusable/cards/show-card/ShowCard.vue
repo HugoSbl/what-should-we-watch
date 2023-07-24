@@ -1,5 +1,5 @@
 <template>
-  <div class="flex h-36 mb-2 justify-between hover:bg-black/20">
+  <div class="flex h-36 mb-2 justify-between select-none hover:bg-black/20">
     <div class="flex items-center">
       <div class="flex-shrink-0 w-24">
         <img
@@ -15,7 +15,9 @@
         <div class="font-black text-sm md:text-base line-clamp-1">
           {{ title }}
         </div>
-        <div class="inline-flex md:flex-row flex-col md:space-x-1 space-y-1">
+        <div
+          class="inline-flex md:flex-row flex-col md:space-x-1 space-y-1 md:space-y-0"
+        >
           <div
             class="rounded text-sm bg-slate-400/70 inline-block text-white px-1"
           >
