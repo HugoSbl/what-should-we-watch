@@ -1,6 +1,6 @@
 <script setup>
 import { ref, watchEffect, inject, onMounted } from "vue";
-import GlobalCards from "../reusable/cards/global-card.vue";
+import SectionCard from "../reusable/cards/SectionCard.vue";
 import { useFetch } from "nuxt/app";
 import ShowCard from "../reusable/cards/show-card/ShowCard.vue";
 
@@ -18,11 +18,9 @@ onMounted(() => {
       if (show) {
         newShowsInWatchlist.push(show);
       } else {
-        const { data, error, execute } = useFetch(
+        const { data, error } = await useFetch(
           `https://api.tvmaze.com/shows/${id}`
         );
-
-        await execute();
 
         if (error.value) {
           console.log("error", error.value);
@@ -39,8 +37,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <GlobalCards title="My list">
-    <div class="overflow-y-auto h-96">
+  <SectionCard title="My list">
+    <div class="overflow-y-auto max-h-[425px]">
       <div v-for="show in showsInWatchlist" :key="show.id">
         <ShowCard
           :id="show.id"
@@ -54,5 +52,5 @@ onMounted(() => {
         />
       </div>
     </div>
-  </GlobalCards>
+  </SectionCard>
 </template>

@@ -1,6 +1,6 @@
 <script setup>
 import { ref, watchEffect } from "vue";
-import GlobalCards from "../reusable/cards/global-card.vue";
+import SectionCard from "../reusable/cards/SectionCard.vue";
 import { useFetch } from "nuxt/app";
 import ShowCard from "../reusable/cards/show-card/ShowCard.vue";
 
@@ -28,11 +28,11 @@ watchEffect(async () => {
 </script>
 
 <template>
-  <GlobalCards title="Search">
+  <SectionCard title="Search">
     <div class="flex flex-col">
       <input
-        class="w-full border-2 rounded border-gray-400 p-2"
         v-model="searchInput"
+        class="w-full border-2 rounded border-gray-400 p-2"
         placeholder="search for a show"
       />
 
@@ -54,5 +54,5 @@ watchEffect(async () => {
         </div>
       </div>
     </div>
-  </GlobalCards>
+  </SectionCard>
 </template>
