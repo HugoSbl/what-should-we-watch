@@ -1,22 +1,32 @@
 <template>
-  <div class="flex h-36 mb-2 justify-between hover:bg-black/10">
-    <div class="flex">
-      <img
-        v-if="image"
-        :src="image.medium"
-        alt="Show image"
-        class="rounded-lg w-24"
-      />
-      <div v-else class="w-24">No image</div>
+  <div class="flex h-36 mb-2 justify-between hover:bg-black/20">
+    <div class="flex items-center">
+      <div class="w-24">
+        <img
+          v-if="image"
+          :src="image.medium"
+          alt="Show image"
+          class="rounded-lg aspect-auto"
+        />
+        <div v-else class="">No image</div>
+      </div>
 
-      <div>
-        <div class="ml-2 font-black text-base">{{ title }}</div>
+      <div class="space-y-2">
+        <div class="ml-2 font-black text-sm md:text-base line-clamp-1">
+          {{ title }}
+        </div>
         <div class="flex">
-          <div class="ml-2 rounded bg-slate-400 inline-block text-white p-1">
-            <div v-if="rating && rating.average">{{ rating.average }}</div>
+          <div
+            class="ml-2 rounded text-sm bg-slate-400/70 inline-block text-white px-1"
+          >
+            <div class="flex items-center" v-if="rating && rating.average">
+              {{ rating.average }}<Star class="ml-1" :size="14" />
+            </div>
             <div v-else>no rating</div>
           </div>
-          <div class="ml-2 rounded bg-slate-400 inline-block text-white p-1">
+          <div
+            class="ml-2 rounded text-sm bg-slate-400/70 inline-block text-white px-1"
+          >
             <div v-if="averageRuntime">{{ averageRuntime }} min</div>
             <div v-else>unknown runtime</div>
           </div>
@@ -44,9 +54,10 @@
 import ButtonCard from "./ButtonCard.vue";
 import { watchEffect } from "vue";
 import DialogShowCard from "./DialogShowCard.vue";
+import { Star } from "lucide-vue-next";
 
 export default {
-  components: { ButtonCard, DialogShowCard },
+  components: { ButtonCard, DialogShowCard, Star },
 
   props: {
     id: {
@@ -85,23 +96,6 @@ export default {
       type: String,
       required: true,
     },
-  },
-
-  setup(props) {
-    watchEffect(() => {
-      console.log(
-        "all props in showCard :",
-        props.id,
-        props.title,
-        props.image,
-        props.links,
-        props.premiered,
-        props.ended,
-        props.rating,
-        props.averageRuntime,
-        props.showCardVersion
-      );
-    });
   },
 };
 </script>

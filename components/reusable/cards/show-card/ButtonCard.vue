@@ -12,9 +12,9 @@
 
     <div v-if="showCardVersion === 'mylist'">
       <div class="flex">
-        <n-space item-style="display: flex;" align="center" class="mr-2">
-          <n-checkbox size="large" @change="handleCheckboxChange" />
-        </n-space>
+        <NSpace item-style="display: flex;" align="center" class="mr-2">
+          <NCheckbox size="large" @change="handleCheckboxChange" />
+        </NSpace>
         <button
           class="py-1 px-2 rounded bg-yellow-300"
           @click="removeFromWatchlist(id)"
