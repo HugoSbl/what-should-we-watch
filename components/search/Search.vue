@@ -36,10 +36,7 @@ watchEffect(async () => {
         placeholder="search for a show"
       />
 
-      <div
-        v-if="fetchResults && fetchResults.length > 0 && !isFetching"
-        class="overflow-y-auto h-96"
-      >
+      <div class="overflow-y-auto h-96">
         <div v-for="(show, index) in fetchResults" :key="index">
           <ShowCard
             :id="show.show.id"
