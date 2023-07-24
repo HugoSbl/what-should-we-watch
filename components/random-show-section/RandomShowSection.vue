@@ -7,7 +7,7 @@
         </NButton>
       </div>
       <div v-if="selectedShow" class="md:w-full">
-        <DisplayRandomShowCard
+        <DisplaySelectedRandomShowSection
           v-if="!isPending"
           :selectedShowData="selectedShow"
           :isPending="isPending"
@@ -21,7 +21,7 @@
 import { ref, inject } from "vue";
 import { useFetch } from "nuxt/app";
 import SectionCard from "../reusable/cards/SectionCard.vue";
-import DisplayRandomShowCard from "./DisplayRandomShowCard.vue";
+import DisplaySelectedRandomShowSection from "./DisplaySelectedRandomShowSection.vue";
 import { NButton } from "naive-ui/es/button";
 
 const selectedWatchlistShows = inject("selectedWatchlistShows");

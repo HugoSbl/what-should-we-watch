@@ -48,56 +48,33 @@
         <dialog-show-card />
       </div>
     </div>
+
     <ButtonCard :id="id" :rating="rating" :showCardVersion="showCardVersion" />
   </div>
 </template>
 
-<script>
-import ButtonCard from "./ButtonCard.vue";
-import { watchEffect } from "vue";
-import DialogShowCard from "./DialogShowCard.vue";
+<script setup>
+import ButtonCard from "./ButtonShowCard.vue";
 import { Star } from "lucide-vue-next";
 
-export default {
-  components: { ButtonCard, DialogShowCard, Star },
-
-  props: {
-    id: {
-      type: Number,
-      required: true,
-    },
-    title: {
-      type: String,
-      required: true,
-    },
-    image: {
-      type: Object,
-      required: false,
-    },
-    links: {
-      type: String,
-      required: false,
-    },
-    premiered: {
-      type: String,
-      required: false,
-    },
-    ended: {
-      type: String,
-      required: false,
-    },
-    rating: {
-      type: Number || Object,
-      required: false,
-    },
-    averageRuntime: {
-      type: Number,
-      required: false,
-    },
-    showCardVersion: {
-      type: String,
-      required: true,
-    },
+const props = defineProps({
+  id: {
+    type: Number,
+    required: true,
   },
-};
+  title: {
+    type: String,
+    required: true,
+  },
+  image: Object,
+  links: String,
+  premiered: String,
+  ended: String,
+  rating: [Number, Object],
+  averageRuntime: Number,
+  showCardVersion: {
+    type: String,
+    required: true,
+  },
+});
 </script>

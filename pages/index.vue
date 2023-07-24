@@ -1,7 +1,7 @@
 <script setup>
-import Search from "../components/search/Search.vue";
-import MyList from "../components/my-list/MyList.vue";
-import SelectRandomShow from "../components/random-show/SelectRandomShow.vue";
+import SearchSection from "../components/searchSection/SearchSection.vue";
+import MyListSection from "../components/my-list-section/MyListSection.vue";
+import SelectRandomShowSection from "../components/random-show-section/RandomShowSection.vue";
 import { useRoute } from "vue-router";
 const route = useRoute();
 import { ref, provide, onMounted, watch } from "vue";
@@ -49,10 +49,10 @@ provide("selectedWatchlistShows", selectedWatchlistShows);
 <template>
   <div>
     <div class="md:flex w-full">
-      <Search class="md:w-[50%]" />
-      <MyList class="md:w-[50%]" :watchlist="watchlist.value" />
+      <SearchSection class="md:w-[50%]" />
+      <MyListSection class="md:w-[50%]" :watchlist="watchlist.value" />
     </div>
 
-    <SelectRandomShow />
+    <SelectRandomShowSection />
   </div>
 </template>
