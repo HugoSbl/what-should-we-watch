@@ -1,6 +1,6 @@
 <template>
   <div class="h-full flex items-center pr-2">
-    <div class="flex items-center" v-if="showCardVersion === 'search'">
+    <div v-if="showCardVersion === 'search'" class="flex items-center">
       <Modal :id="id" />
       <NButton
         v-if="!isInWatchlist"
@@ -34,7 +34,7 @@
 </template>
 
 <script setup>
-import { ref, computed, inject } from "vue";
+import { toRefs, computed, inject } from "vue";
 import { NSpace, NCheckbox, NButton } from "naive-ui";
 import Modal from "./ModalButtonShowCard.vue";
 

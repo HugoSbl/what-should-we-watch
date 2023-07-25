@@ -2,8 +2,11 @@
 import { defineProps } from "vue";
 import ShowCard from "../reusable/cards/show-card/ShowCard.vue";
 
-const props = defineProps({
-  selectedShowData: { type: Object, required: false },
+defineProps({
+  selectedShowData: {
+    type: Object,
+    default: () => ({}),
+  },
 });
 </script>
 
