@@ -2,8 +2,6 @@
 import SearchSection from "../components/search-section/SearchSection.vue";
 import MyListSection from "../components/my-list-section/MyListSection.vue";
 import SelectRandomShowSection from "../components/random-show-section/RandomShowSection.vue";
-import { useRoute } from "vue-router";
-const route = useRoute();
 import { ref, provide, onMounted, watch } from "vue";
 
 const watchlist = ref([]);

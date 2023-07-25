@@ -14,7 +14,7 @@
         <template #header-extra>
           <div @click="showModal = false">Close</div>
         </template>
-        <div class="" v-if="showData">
+        <div v-if="showData">
           <div class="flex flex-col md:flex-row overflow-y-scroll">
             <div class="md:w-1/3">
               <img
