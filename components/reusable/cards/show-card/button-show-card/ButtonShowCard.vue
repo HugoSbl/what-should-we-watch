@@ -16,7 +16,7 @@
     <div v-if="showCardVersion === 'mylist'">
       <div class="flex items-center">
         <NSpace item-style="display: flex;" align="center" class="mr-4">
-          <NCheckbox size="large" @change="handleCheckboxChange" />
+          <NCheckbox size="large" @update:checked="handleCheckboxChange" />
         </NSpace>
         <Modal :id="id" />
         <NButton

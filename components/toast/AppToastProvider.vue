@@ -12,7 +12,7 @@
           v-for="toast in toasts"
           :key="toast.id"
           :toast="toast"
-          class="bg-white/10 border-2 border-white/10 px-4 py-2 rounded-lg m-4 text-base"
+          class="bg-slate-800/90 border-2 border-white/10 px-4 py-2 rounded-lg m-4 text-base"
         >
           <ToastTitle class="font-bold my-2" />
           <ToastDescription class="mb-2" />

@@ -3,7 +3,7 @@
     <div class="w-full flex flex-col md:flex-row">
       <div class="items-center justify-center flex w-full">
         <NButton strong type="tertiary" @click="handleRandomizer">
-          Select a random show from selected ones in my list
+          Select a random show
         </NButton>
       </div>
       <div v-if="selectedShow" class="md:w-full">
