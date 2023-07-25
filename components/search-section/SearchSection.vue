@@ -21,7 +21,6 @@ watchEffect(async () => {
       return;
     }
     fetchResults.value = data.value;
-    console.log("fetch result", fetchResults.value);
     return;
   }
 });

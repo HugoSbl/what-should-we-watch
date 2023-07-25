@@ -9,5 +9,5 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  modules: ["@nuxtjs/tailwindcss", "@nuxtjs/eslint-module"],
+  modules: ["@nuxtjs/tailwindcss", "@nuxtjs/eslint-module", "@nuxt/devtools"],
 });
