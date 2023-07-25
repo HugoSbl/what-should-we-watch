@@ -9,6 +9,9 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@nuxt/devtools": "latest",
+    "@nuxtjs/eslint-module": "^4.1.0",
+    "@nuxtjs/tailwindcss": "^6.8.0",
     "@babel/eslint-parser": "^7.22.9",
     "@types/node": "^18.16.19",
     "autoprefixer": "^10.4.14",
@@ -26,9 +29,6 @@
     "radix-vue": "^0.1.10",
     "naive-ui": "^2.34.4",
     "@iconify/vue": "^4.1.1",
-    "nuxt": "^3.6.5",
-    "@nuxt/devtools": "latest",
-    "@nuxtjs/eslint-module": "^4.1.0",
-    "@nuxtjs/tailwindcss": "^6.8.0"
+    "nuxt": "^3.6.5"
   }
 }
