@@ -59,9 +59,9 @@
 </template>
 
 <script setup>
-import ButtonShowCard from "./ButtonShowCard.vue";
+import ButtonShowCard from "./button-show-card/ButtonShowCard.vue";
 import { Star } from "lucide-vue-next";
-import ModalButtonShowCard from "./ModalButtonShowCard.vue";
+import ModalButtonShowCard from "./button-show-card/ModalButtonShowCard.vue";
 
 const props = defineProps({
   id: {
