@@ -23,6 +23,9 @@ import { useFetch } from "nuxt/app";
 import SectionCard from "../reusable/cards/SectionCard.vue";
 import DisplaySelectedRandomShowSection from "./DisplaySelectedRandomShowSection.vue";
 import { NButton } from "naive-ui/es/button";
+import { useToast } from "@ark-ui/vue";
+
+const toast = useToast();
 
 const selectedWatchlistShows = inject("selectedWatchlistShows");
 const isPending = ref(true);
@@ -66,9 +69,22 @@ const handleRandomizer = async () => {
       console.log("isPending : ", isPending.value);
     } else {
       console.log("All shows have been selected"); // add a toast here
+      toast.value.create({
+        type: "error",
+        title: "No more shows to view",
+        description:
+          "All shows selected from your list have already been viewed",
+        placement: "bottom-right",
+      });
     }
   } else {
     console.log("No shows selected"); // add a toast here
+    toast.value.create({
+      type: "error",
+      title: "No show selected",
+      description: "Please select some shows from your list first",
+      placement: "bottom-right",
+    });
   }
 };
 </script>
