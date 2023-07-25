@@ -1,7 +1,7 @@
 <template>
   <div class="h-full flex items-center pr-2">
-    <Modal :id="id" />
-    <div v-if="showCardVersion === 'search'">
+    <div class="flex items-center" v-if="showCardVersion === 'search'">
+      <Modal :id="id" />
       <NButton
         v-if="!isInWatchlist"
         class="text-xl"
@@ -14,11 +14,11 @@
     </div>
 
     <div v-if="showCardVersion === 'mylist'">
-      <div class="flex">
-        <NSpace item-style="display: flex;" align="center" class="mr-2">
+      <div class="flex items-center">
+        <NSpace item-style="display: flex;" align="center" class="mr-4">
           <NCheckbox size="large" @change="handleCheckboxChange" />
         </NSpace>
-
+        <Modal :id="id" />
         <NButton
           class="text-xl"
           strong
@@ -29,6 +29,7 @@
         >
       </div>
     </div>
+    <div v-if="showCardVersion === 'randomizer'"><Modal :id="id" /></div>
   </div>
 </template>
 

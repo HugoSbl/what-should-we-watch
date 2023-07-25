@@ -17,7 +17,7 @@
         </div>
 
         <div
-          class="inline-flex md:flex-row flex-col md:space-x-1 space-y-1 md:space-y-0"
+          class="inline-flex lg:flex-row flex-col lg:space-x-1 space-y-1 lg:space-y-0"
         >
           <div
             class="rounded text-sm bg-slate-400/70 inline-block text-white px-1"

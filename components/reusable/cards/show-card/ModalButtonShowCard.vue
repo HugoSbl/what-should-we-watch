@@ -1,8 +1,6 @@
 <template>
   <div>
     <Info @click="showModal = true" />
-    {{ id }}
-
     <n-modal v-model:show="showModal">
       <n-card
         v-if="showData"
@@ -29,7 +27,7 @@
             </div>
             <div class="mt-4 md:w-2/3 md:ml-2 md:mt-0">
               <div>
-                <div class="inline-flex space-x-2">
+                <div class="inline-flex space-x-2 mb-4">
                   <div
                     class="rounded text-base bg-slate-400/70 inline-block text-white p-2"
                   >
@@ -38,7 +36,7 @@
                       class="flex items-center"
                     >
                       {{ showData.rating.average
-                      }}<Star class="ml-1" :size="14" />
+                      }}<Star class="ml-1" :size="18" />
                     </div>
                     <div v-else>no rating</div>
                   </div>
@@ -102,7 +100,7 @@
                   {{ showData.network ? showData.network.name : "Unknown" }}
                 </div>
 
-                <div>
+                <div class="mt-4">
                   Summary:
                   <span
                     v-html="showData.summary || 'No summary available'"
