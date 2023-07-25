@@ -36,15 +36,4 @@ Start the development server on `http://localhost:3000`:
 pnpm run dev
 ```
 
-## Production
-
-Locally preview production build:
-
-```bash
-# pnpm
-pnpm run preview
-
-
-```
-
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
