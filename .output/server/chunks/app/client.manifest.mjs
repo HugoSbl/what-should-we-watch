@@ -1,11 +1,8 @@
 const client_manifest = {
-  "_vue.505b826e.7d1269d7.js": {
+  "__plugin-vue_export-helper.c27b6911.js": {
     "resourceType": "script",
     "module": true,
-    "file": "vue.505b826e.7d1269d7.js",
-    "imports": [
-      "node_modules/.pnpm/nuxt@3.6.5_@types+node@18.16.19_eslint@8.45.0/node_modules/nuxt/dist/app/entry.js"
-    ]
+    "file": "_plugin-vue_export-helper.c27b6911.js"
   },
   "node_modules/.pnpm/@nuxt+ui-templates@1.2.0/node_modules/@nuxt/ui-templates/dist/templates/error-404.css": {
     "resourceType": "style",
@@ -16,10 +13,10 @@ const client_manifest = {
     "resourceType": "script",
     "module": true,
     "css": [],
-    "file": "error-404.565250f5.js",
+    "file": "error-404.26b1866b.js",
     "imports": [
       "node_modules/.pnpm/nuxt@3.6.5_@types+node@18.16.19_eslint@8.45.0/node_modules/nuxt/dist/app/entry.js",
-      "_vue.505b826e.7d1269d7.js"
+      "__plugin-vue_export-helper.c27b6911.js"
     ],
     "isDynamicEntry": true,
     "src": "node_modules/.pnpm/@nuxt+ui-templates@1.2.0/node_modules/@nuxt/ui-templates/dist/templates/error-404.vue"
@@ -37,10 +34,10 @@ const client_manifest = {
     "resourceType": "script",
     "module": true,
     "css": [],
-    "file": "error-500.64fbf86a.js",
+    "file": "error-500.aa4d6f23.js",
     "imports": [
-      "_vue.505b826e.7d1269d7.js",
-      "node_modules/.pnpm/nuxt@3.6.5_@types+node@18.16.19_eslint@8.45.0/node_modules/nuxt/dist/app/entry.js"
+      "node_modules/.pnpm/nuxt@3.6.5_@types+node@18.16.19_eslint@8.45.0/node_modules/nuxt/dist/app/entry.js",
+      "__plugin-vue_export-helper.c27b6911.js"
     ],
     "isDynamicEntry": true,
     "src": "node_modules/.pnpm/@nuxt+ui-templates@1.2.0/node_modules/@nuxt/ui-templates/dist/templates/error-500.vue"
@@ -51,34 +48,35 @@ const client_manifest = {
   },
   "node_modules/.pnpm/nuxt@3.6.5_@types+node@18.16.19_eslint@8.45.0/node_modules/nuxt/dist/app/entry.css": {
     "resourceType": "style",
-    "file": "entry.823d4249.css",
+    "file": "entry.551aba0b.css",
     "src": "node_modules/.pnpm/nuxt@3.6.5_@types+node@18.16.19_eslint@8.45.0/node_modules/nuxt/dist/app/entry.css"
   },
   "node_modules/.pnpm/nuxt@3.6.5_@types+node@18.16.19_eslint@8.45.0/node_modules/nuxt/dist/app/entry.js": {
     "resourceType": "script",
     "module": true,
     "css": [
-      "entry.823d4249.css"
+      "entry.551aba0b.css"
     ],
     "dynamicImports": [
       "node_modules/.pnpm/@nuxt+ui-templates@1.2.0/node_modules/@nuxt/ui-templates/dist/templates/error-404.vue",
       "node_modules/.pnpm/@nuxt+ui-templates@1.2.0/node_modules/@nuxt/ui-templates/dist/templates/error-500.vue"
     ],
-    "file": "entry.cf0382f7.js",
+    "file": "entry.0b37a5b5.js",
     "isEntry": true,
     "src": "node_modules/.pnpm/nuxt@3.6.5_@types+node@18.16.19_eslint@8.45.0/node_modules/nuxt/dist/app/entry.js",
     "_globalCSS": true
   },
-  "entry.823d4249.css": {
-    "file": "entry.823d4249.css",
+  "entry.551aba0b.css": {
+    "file": "entry.551aba0b.css",
     "resourceType": "style"
   },
   "pages/index.vue": {
     "resourceType": "script",
     "module": true,
-    "file": "index.4d771c38.js",
+    "file": "index.4a66f84f.js",
     "imports": [
-      "node_modules/.pnpm/nuxt@3.6.5_@types+node@18.16.19_eslint@8.45.0/node_modules/nuxt/dist/app/entry.js"
+      "node_modules/.pnpm/nuxt@3.6.5_@types+node@18.16.19_eslint@8.45.0/node_modules/nuxt/dist/app/entry.js",
+      "__plugin-vue_export-helper.c27b6911.js"
     ],
     "isDynamicEntry": true,
     "src": "pages/index.vue"
