@@ -152,7 +152,6 @@ watch(showModal, async (newValue) => {
   if (newValue === true) {
     try {
       showData.value = await fetchData();
-      console.log("data value from modal", showData.value);
     } catch (error) {
       fetchError.value = error;
       console.error("Error fetching data in modal:", error);
@@ -165,7 +164,6 @@ async function fetchData() {
   if (!response.ok) {
     throw new Error(`error! status: ${response.status}`);
   }
-  console.log("id value from modal", id.value);
   return await response.json();
 }
 </script>
