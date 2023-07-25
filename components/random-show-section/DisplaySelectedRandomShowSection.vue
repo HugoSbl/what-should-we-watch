@@ -1,5 +1,4 @@
 <script setup>
-import { defineProps } from "vue";
 import ShowCard from "../reusable/cards/show-card/ShowCard.vue";
 
 defineProps({
