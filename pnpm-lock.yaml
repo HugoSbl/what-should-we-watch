@@ -7,6 +7,9 @@ dependencies:
   '@iconify/vue':
     specifier: ^4.1.1
     version: 4.1.1(vue@3.3.4)
+  '@zag-js/toggle':
+    specifier: ^0.13.0
+    version: 0.13.0
   lucide-vue-next:
     specifier: ^0.263.0
     version: 0.263.0(vue@3.3.4)
@@ -2030,6 +2033,10 @@ packages:
     resolution: {integrity: sha512-FiW/Vva4FulfK+DkIR79edxPqm8dRoX2oxzxqZLuWnt/0KQNjxBB3v2MvWdYj3q1H+yIErSodHHe4XDQpWsWKg==}
     dev: false
 
+  /@zag-js/anatomy@0.13.0:
+    resolution: {integrity: sha512-rZuXK78u4FVYkwnkm4UONNE9o+eHIPzf5dJiWqYl5CvBg0Mfygc5nsJqCU00PLoXnGGUM3U+Avjg9OYBgi7MDw==}
+    dev: false
+
   /@zag-js/aria-hidden@0.10.5:
     resolution: {integrity: sha512-7I1UNWFzLcBkw47gWcRkJJY7af7hO5oSbd+XxEoeeTHaIAtbB0zOxElEraWEMOmGxXrKpdAJUw+BYlgbPgIXVQ==}
     dependencies:
@@ -2105,6 +2112,13 @@ packages:
       klona: 2.0.6
     dev: false
 
+  /@zag-js/core@0.13.0:
+    resolution: {integrity: sha512-Ni/4kpexCStdSmt/u4ZPAr8wxJAtEwSxnw3aAxDb0BEDyUoJvTqeHukkKOEXdcmVa8G3HcfzgU8haQl7A2eUyA==}
+    dependencies:
+      '@zag-js/store': 0.13.0
+      klona: 2.0.6
+    dev: false
+
   /@zag-js/dialog@0.10.5:
     resolution: {integrity: sha512-dxPOxZdLVxhWtF/HHA014ygzB7ymWiA0Ou7EOr0bV/SFYvhco+ipeqGcak5uh/hlCauihPHIqmbZDmUHcv8NoQ==}
     dependencies:
@@ -2137,6 +2151,10 @@ packages:
 
   /@zag-js/dom-query@0.10.5:
     resolution: {integrity: sha512-zm6wA5+kqU48it6afNjaUhjVSixKZruTKB23z0V1xBqKbuiLOMMOZ5oK26cTPSXtZ5CPhDNZ2Qk4pliS5n9SVw==}
+    dev: false
+
+  /@zag-js/dom-query@0.13.0:
+    resolution: {integrity: sha512-lVT+0pZ8xDL1nus4pv3mrmNjck4bMloDwNBCF6sOK6onHx1vdmtq+V0GKUP4q4QnkPeK/JnhiCExqrW4h07cUQ==}
     dev: false
 
   /@zag-js/editable@0.10.5:
@@ -2392,6 +2410,12 @@ packages:
       proxy-compare: 2.5.1
     dev: false
 
+  /@zag-js/store@0.13.0:
+    resolution: {integrity: sha512-dKFwsAMRtw7E4oqbD6uLpy+GFyhLCLGcQksdBQD6TeKCSMftLtyYeLel4OTHnPXt1qea8Yd+MXObsabkh6YfrQ==}
+    dependencies:
+      proxy-compare: 2.5.1
+    dev: false
+
   /@zag-js/tabbable@0.10.5:
     resolution: {integrity: sha512-kL9g+MsrNxRHPHjBtFVyr12q5S9Bc9lHz02b64jJWvJs1K0JBNbcGgNHQfKAzbMImS/JjiTXqLblmqHckii4dw==}
     dependencies:
@@ -2443,6 +2467,16 @@ packages:
       '@zag-js/utils': 0.10.5
     dev: false
 
+  /@zag-js/toggle@0.13.0:
+    resolution: {integrity: sha512-38LCCUc7RNygaujVpz/DLYSe3gyUnsJ3PUdCOkvclNNvb8+FqHiQOH+zLH8O2COdBUDokbRLOQuPQS19H2lxdw==}
+    dependencies:
+      '@zag-js/anatomy': 0.13.0
+      '@zag-js/core': 0.13.0
+      '@zag-js/dom-query': 0.13.0
+      '@zag-js/types': 0.13.0
+      '@zag-js/utils': 0.13.0
+    dev: false
+
   /@zag-js/tooltip@0.10.5:
     resolution: {integrity: sha512-zFEaPkURsMyO3eq9KBXGci7rpkx8m0DwIf10PxuiI2ebJ1/biDivULnpLOrK2tMs46SCvt5iTwM+/kAydB8WrA==}
     dependencies:
@@ -2462,8 +2496,18 @@ packages:
       csstype: 3.1.2
     dev: false
 
+  /@zag-js/types@0.13.0:
+    resolution: {integrity: sha512-mYD43OoEBr1LhwLo3m24nJokIJEoCN83/5t5l3kf3L/vLvMYZKWqb+WC6+87KTQh6TNPR6sHHP1Sv07v3MDwHw==}
+    dependencies:
+      csstype: 3.1.2
+    dev: false
+
   /@zag-js/utils@0.10.5:
     resolution: {integrity: sha512-xalNmiDZ9Pl8vsoolnWILsM4zfR3Tx7SEZLJVEJLNuzOmsWN13UBAB0JDyKDbYoCJ7ekeoh/5UcpgXjnriV8rQ==}
+    dev: false
+
+  /@zag-js/utils@0.13.0:
+    resolution: {integrity: sha512-1n4x3FfvyWgeuZpAdMUfckdJfgneRxLe7HIRXZfymMq1qvclx3eYZ82odXjkX6hGGNTlvgetpXVzIePMxVkw/g==}
     dev: false
 
   /@zag-js/visually-hidden@0.10.5:
