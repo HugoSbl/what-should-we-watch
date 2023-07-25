@@ -1,5 +1,6 @@
 <template>
   <div class="h-full flex items-center pr-2">
+    <Modal :id="id" />
     <div v-if="showCardVersion === 'search'">
       <NButton
         v-if="!isInWatchlist"
@@ -28,79 +29,64 @@
         >
       </div>
     </div>
-    <div v-else></div>
   </div>
 </template>
 
-<script>
-import { inject, toRefs, computed } from "vue";
-import { NSpace } from "naive-ui/es/space";
-import { NCheckbox } from "naive-ui/es/checkbox";
-import { NButton } from "naive-ui/es/button";
+<script setup>
+import { ref, computed, inject } from "vue";
+import { NSpace, NCheckbox, NButton } from "naive-ui";
+import Modal from "./ModalButtonShowCard.vue";
 
-export default {
-  components: { NSpace, NCheckbox, NButton },
-  props: {
-    id: {
-      type: Number,
-      required: true,
-    },
-    rating: {
-      type: Number || Object,
-      required: true,
-    },
-    showCardVersion: {
-      type: String,
-      required: true,
-    },
+const props = defineProps({
+  id: {
+    type: Number,
+    required: true,
   },
-  setup(props) {
-    const { id, rating } = toRefs(props);
-    const watchlist = inject("watchlist");
-    const addToWatchlist = inject("addToWatchlist");
-    const removeFromWatchlist = inject("removeFromWatchlist");
-    const selectedWatchlistShows = inject("selectedWatchlistShows");
-
-    const addToSelectedWatchlistShows = (id, rating) => {
-      rating = rating.average || 5; // if no rating available, rating is set to 5
-      selectedWatchlistShows.value.push({ id: id, rating: rating });
-      console.log("selectedWatchlistShows", selectedWatchlistShows.value);
-    };
-
-    const removeFromSelectedWatchlistShows = (id) => {
-      const index = selectedWatchlistShows.value.findIndex(
-        (show) => show.id === id
-      );
-      if (index !== -1) {
-        selectedWatchlistShows.value.splice(index, 1);
-      }
-    };
-    const isInWatchlist = computed(() => {
-      return watchlist.value.includes(id.value);
-    });
-
-    const handleCheckboxChange = (checked) => {
-      console.log("Checkbox change:", {
-        checked,
-        id: id.value,
-        rating: rating.value,
-      });
-      if (checked) {
-        addToSelectedWatchlistShows(id.value, rating.value);
-      } else {
-        removeFromSelectedWatchlistShows(id.value);
-      }
-    };
-
-    return {
-      addToWatchlist,
-      removeFromWatchlist,
-      selectedWatchlistShows,
-      isInWatchlist,
-      addToSelectedWatchlistShows,
-      removeFromSelectedWatchlistShows,
-      handleCheckboxChange,
-    };
+  rating: {
+    type: [Number, Object],
+    required: true,
   },
+  showCardVersion: {
+    type: String,
+    required: true,
+  },
+});
+
+const { id, rating } = toRefs(props);
+const watchlist = inject("watchlist");
+const addToWatchlist = inject("addToWatchlist");
+const removeFromWatchlist = inject("removeFromWatchlist");
+const selectedWatchlistShows = inject("selectedWatchlistShows");
+
+const addToSelectedWatchlistShows = (id, rating) => {
+  rating = rating.average || 5; // if no rating available, rating is set to 5
+  selectedWatchlistShows.value.push({ id: id, rating: rating });
+  console.log("selectedWatchlistShows", selectedWatchlistShows.value);
+};
+
+const removeFromSelectedWatchlistShows = (id) => {
+  const index = selectedWatchlistShows.value.findIndex(
+    (show) => show.id === id
+  );
+  if (index !== -1) {
+    selectedWatchlistShows.value.splice(index, 1);
+  }
+};
+
+const isInWatchlist = computed(() => {
+  return watchlist.value.includes(id.value);
+});
+
+const handleCheckboxChange = (checked) => {
+  console.log("Checkbox change:", {
+    checked,
+    id: id.value,
+    rating: rating.value,
+  });
+  if (checked) {
+    addToSelectedWatchlistShows(id.value, rating.value);
+  } else {
+    removeFromSelectedWatchlistShows(id.value);
+  }
 };
 </script>
