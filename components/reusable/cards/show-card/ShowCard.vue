@@ -15,8 +15,9 @@
         <div class="font-black text-sm md:text-base line-clamp-1">
           {{ title }}
         </div>
+
         <div
-          class="inline-flex md:flex-row flex-col md:space-x-1 space-y-1 md:space-y-0"
+          class="inline-flex lg:flex-row flex-col lg:space-x-1 space-y-1 lg:space-y-0"
         >
           <div
             class="rounded text-sm bg-slate-400/70 inline-block text-white px-1"
@@ -49,13 +50,18 @@
       </div>
     </div>
 
-    <ButtonCard :id="id" :rating="rating" :showCardVersion="showCardVersion" />
+    <ButtonShowCard
+      :id="id"
+      :rating="rating"
+      :showCardVersion="showCardVersion"
+    />
   </div>
 </template>
 
 <script setup>
-import ButtonCard from "./ButtonShowCard.vue";
+import ButtonShowCard from "./button-show-card/ButtonShowCard.vue";
 import { Star } from "lucide-vue-next";
+import ModalButtonShowCard from "./button-show-card/ModalButtonShowCard.vue";
 
 const props = defineProps({
   id: {
