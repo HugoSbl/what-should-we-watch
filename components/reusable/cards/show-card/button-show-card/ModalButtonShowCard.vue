@@ -12,7 +12,7 @@
         aria-modal="true"
       >
         <template #header-extra>
-          <div @click="showModal = false">Close</div>
+          <div @click="showModal = false"><X /></div>
         </template>
         <div v-if="showData">
           <div class="flex flex-col md:flex-row overflow-y-scroll">
@@ -51,7 +51,7 @@
                   <div>
                     <div
                       v-if="showData.premiered || showData.ended"
-                      class="flex rounded text-base bg-slate-400/70 inline-block text-white p-2"
+                      class="flex rounded text-base bg-slate-400/70 text-white p-2"
                     >
                       <div class="">
                         <div v-if="showData.premiered">
@@ -134,7 +134,7 @@ import { NButton, NModal, NCard } from "naive-ui";
 import { ref, watch, toRef } from "vue";
 import { Info } from "lucide-vue-next";
 
-import { Star } from "lucide-vue-next";
+import { Star, X } from "lucide-vue-next";
 
 const props = defineProps({
   id: {

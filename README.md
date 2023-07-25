@@ -1,20 +1,30 @@
-# Nuxt 3 Minimal Starter
+# what should we watch
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+a simple application made with nuxt 3 in 4 days.
+
+## Features
+
+- Search shows from TV maze API
+- Display info about each show
+- Add Shows to your list
+- Sort them
+- select some of them in your list to launch a randomizer based on the rating of each show
+
+## Tech Stack
+
+- 🎨 **Frontend**: [Nuxt 3](https://nuxt.com/), [Vue.js 3](https://vuejs.org/)
+- 💅 **Design system**: [Tailwind CSS v3](https://tailwindcss.com/)
+- 🧩 **UI components**: [Radix UI for vue](https://www.radix-vue.com/overview/getting-started.html), [Ark UI](https://ark-ui.com/), [Naive UI](https://www.naiveui.com/en-US/os-theme)
+- 📚 **Language**: [TypeScript](https://www.typescriptlang.org/)
+- 🧹 **Linting** & **Formatting**: [ESLint](https://eslint.org/) + [Prettier](https://prettier.io/)
 
 ## Setup
 
 Make sure to install the dependencies:
 
 ```bash
-# npm
-npm install
-
 # pnpm
 pnpm install
-
-# yarn
-yarn install
 ```
 
 ## Development Server
@@ -22,42 +32,19 @@ yarn install
 Start the development server on `http://localhost:3000`:
 
 ```bash
-# npm
-npm run dev
-
 # pnpm
 pnpm run dev
-
-# yarn
-yarn dev
 ```
 
 ## Production
 
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-```
-
 Locally preview production build:
 
 ```bash
-# npm
-npm run preview
-
 # pnpm
 pnpm run preview
 
-# yarn
-yarn preview
+
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.

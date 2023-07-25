@@ -46,7 +46,6 @@
           </div>
         </div>
         <div v-else class="">unknown date</div>
-        <dialog-show-card />
       </div>
     </div>
 

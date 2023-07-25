@@ -11,7 +11,7 @@ export default {
 
 <template>
   <div
-    class="p-2 rounded-xl border-gray-800 bg-white/10 border-2 border-white/10 m-4"
+    class="p-2 rounded-xl bg-white/10 border-2 border-white/10 m-4 min-h-[250px]"
   >
     <h3 class="font-bold italic text-xl m-2 text-center">{{ title }}</h3>
     <slot></slot>
